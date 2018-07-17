@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .postUpload{
+            background-color:powderblue;
+        }
+
+        .uploadImages{
+            background-color:powderblue;
+        }
+
+        .instructions{
+            background-color:powderblue;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+
+    <script language="JavaScript">
+
+        function previewButton(){
+            var cont = document.getElementById("mainTextArea").value;
+            var titleArt = document.getElementById("articleTitle").value;
+            var authr = document.getElementById("author").value;
+            var ima = document.getElementById("imagePreview").value;
+
+            post('/preview', {content: cont, title: titleArt, author: authr, imagePreview: ima});
+        }
+
+
+        function post(path, params, method) {
+            method = method || "post";
+
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+            for(var key in params) {
+                if(params.hasOwnProperty(key)) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", key);
+                    hiddenField.setAttribute("value", params[key]);
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+
+    </script>
+
+    <div class="postUpload">
+        <h1>Upload post for blog/portfolio</h1>
+        <form id="postUpload" method="POST" action="{{ url_for('addPost') }}">
+            Title:<br>
+            <input type="text" name="title" id="articleTitle"><br>
+            Author:<br>
+            <input type="text" name="author" id="author"><br>
+            Post Content:<br>
+            <textarea name="content" form="postUpload" id="mainTextArea">
+                Enter post here...
+            </textarea><br>
+            Location: <br>
+            <input type="checkbox" name="portfolio"> Portfolio<br>
+            <input type="checkbox" name="blog"> Blog<br>
+            Image Preview Link:<br>
+            <input type="text" name="imagePreview" id="imagePreview"><br>
+            <input type="submit" value="Submit">
+            <input type="button" value="Preview Post" onclick="previewButton()">
+        </form>
+    </div>
+
+    <div class="uploadImages">
+        <h1>Upload images to use in post markdown here.</h1>
+        <form action="/uploadImage" method="post" enctype="multipart/form-data">
+            Browse Images <br>
+            <input type="file" name="image"><br>
+            <input type="submit" value="Upload Image"><br>
+        </form>
+    </div>
+
+    <div class="instructions">
+        <h1>
+            Instructions for markdown.
+        </h1>
+        <p>
+            You include pictures, that you have uploaded, with the following.
+            &ltimg src= "static/ImageUploads/someFile.jpg" width="800" height="600" &gt
+            All uploaded pictures can be seen at /images
+        </p>
+        <br>
+        <p>
+            A general markdown guide can be found here...<br>
+            https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet<br>
+            TLDR: headers are denoted by # for h1, ## for h2, etc.
+            * are used for unordered lists.
+            Can list out like so...
+            <br>
+            1. first element <br>
+            2. second elem <br>
+            ..* sub list<br>
+            <br>
+            You can do all sorts of cool things with mark down.  Like tables, embedding videos, etc.
+
+        </p>
+    </div>
+
+
+
+
+
+</body>
+</html>

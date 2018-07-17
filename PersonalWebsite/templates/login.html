@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <h1>Login here</h1>
+
+    <form action="{{ url_for('login') }}" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.userName.label }}
+            {{ form.userName(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}
+            {{ form.password(size=32) }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
+</head>
+<body>
+
+</body>
+</html>

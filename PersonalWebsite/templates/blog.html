@@ -1,0 +1,98 @@
+<html>
+    <title>Evan Putnam's showcase and blog</title>
+
+
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/main.css') }}">
+    <style>
+        .bgimg{
+            background-image: url("{{ url_for('static',filename='Images/blog.jpeg') }}");
+
+            height: 500px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+
+        .bgimgPost{
+            {% if post %}
+            background-image: url("{{ url_for('static',filename=post.image) }}");
+            {% endif %}
+            height: 500px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+    </style>
+
+    <body>
+
+
+        <div class="topnav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('about') }}">About</a>
+          <a href="{{ url_for('portfolioPost') }}">Portfolio</a>
+          <a class="active" href="{{ url_for('blog') }}">Blog</a>
+          <a href="{{ url_for('contactMe') }}">Contact</a>
+        </div>
+
+        {% if posts %}
+        <div class="bgimg">
+            <div class="bgimgTxt">
+                <p>Blog</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if post %}
+        <div class="bgimgPost">
+            <div class="bgimgTxt">
+                <p>{{ post.title }}</p>
+                    <font size="3"> <p>by {{ post.author }}</p> </font>
+            </div>
+
+        </div>
+        {% endif %}
+
+        <br>
+
+        <div class="padded">
+            {% if post %}
+                {{ post.content|safe }}
+            {% endif %}
+
+            {% if posts %}
+                {% for post in posts %}
+                    <img src="{{ url_for('static',filename=post.image) }}" class="blogDisplayImage" width="70%" height="70%"/>
+                    <br>
+                    <h2><a href="{{ url_for('blog', postId=post.id)}}">{{ post.title }}</a></h2>
+                    <hr>
+                {%- endfor %}
+            {% endif %}
+         </div>
+
+
+
+
+    </body>
+
+
+</html>

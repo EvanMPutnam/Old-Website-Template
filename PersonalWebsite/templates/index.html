@@ -1,0 +1,121 @@
+<html>
+    <title>Evan Putnam's showcase and blog</title>
+
+    
+    <head>
+    
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/main.css') }}">
+    <style>
+        .bgimg{
+            background-image: url("{{ url_for('static',filename='Images/front.jpg') }}");
+
+            height: 500px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+
+         .bgimg2{
+            background-image: url("{{ url_for('static',filename='Images/code.jpeg') }}");
+
+            height: 300px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+
+
+    </style>
+
+    <body>
+    
+
+        <div class="topnav">
+          <a class="active" href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('about') }}">About</a>
+          <a href="{{ url_for('portfolioPost') }}">Portfolio</a>
+          <a href="{{ url_for('blog') }}">Blog</a>
+          <a href="{{ url_for('contactMe') }}">Contact</a>
+        </div>
+
+        
+        <div class="bgimg">
+
+            <div class="bgimgTxt">
+                <p>Hello, My Name is Evan</p>
+            </div>
+        </div>
+        
+        <br>
+        
+        <div class="centerElem">
+            <div class="mainText">
+                <b>
+                    THIS IS MY BLOG AND SHOWCASE
+                </b>
+                <p>
+                    Steve Jobs was quoted saying "Everybody in this Country should learn how to program a computer… because it teaches you how to think."
+                </p>
+                <br>
+                <p>
+                    I am a Computer Science student at Rochester Institute of Technology and have been programming since my freshman year of high school.  This website is meant as a way to show the world what I am working on and how, like Job’s said, coding can teach one how to think.
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+
+        <div class="bgimg2">
+            <div class="bgimgTxt">
+                <p>Check out my postings</p>
+            </div>
+        </div>
+
+        <div class="divider">
+            <div class="divLeft">
+                <h1>Portfolio Posts</h1>
+                {% if portfolio %}
+                    {% for ports in portfolio%}
+                        <a href="{{ url_for('portfolio', postId=ports.id)}}">{{ ports.title }}</a>
+                        <br>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="divRight">
+                <h1>Blog posts</h1>
+                {% if blogs %}
+                    {% for blog in blogs%}
+                        <a href="{{ url_for('blog', postId=blog.id)}}">{{ blog.title }}</a>
+                        <br>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+
+    
+    </body>
+
+
+</html>

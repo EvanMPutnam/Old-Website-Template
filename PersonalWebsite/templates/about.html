@@ -1,0 +1,113 @@
+<html>
+    <title>Evan Putnam's showcase and blog</title>
+
+
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/main.css') }}">
+    <style>
+        .bgimg{
+            background-image: url("{{ url_for('static',filename='Images/about.jpeg') }}");
+
+            height: 500px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+    </style>
+
+    <body>
+
+
+        <div class="topnav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a class="active" href="{{ url_for('about') }}">About</a>
+          <a href="{{ url_for('portfolioPost') }}">Portfolio</a>
+          <a href="{{ url_for('blog') }}">Blog</a>
+          <a href="{{ url_for('contactMe') }}">Contact</a>
+        </div>
+
+
+        <div class="bgimg">
+
+            <div class="bgimgTxt">
+                <p>About me</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="padded">
+            <div class="aboutTopContainer" style="width: 70%">
+                <div class="aboutPicture" style="float:left; padding-right: 30px;">
+                    <img src="{{ url_for('static',filename='Images/profImage.jpeg') }}" width="200" height="300">
+                </div>
+
+                <br>
+                <br>
+                <p>Hello, my name is Evan Putnam and I am a Computer Science student at Rochester
+                        Institute of Technology and I have a passion for software and aerospace.  </p>
+                <br>
+
+                <h1>Work Experience</h1>
+                <h3>Guardian Life</h3>
+                <p>This summer I will be working with Guardian Life as a Reporting and Analytics Intern </p>
+                <h3>Rochester Institute of Technology</h3>
+                <p>Spring of 2018 I worked with the Computer Science department as a student lab instructor to assist students with their work.  Responsibilities included writing test scripts to grade students labs, having private tutor sessions with
+                    students, as well as hosting office hours in lab to assist with general questions.</p>
+
+                <h1>Awards</h1>
+                <h3>Apple</h3>
+                <p>This past year I entered into Apple's WWDC, world wide developer conference, scholarship competition
+                    for a software application I wrote.  I ended up winning and had an opportunity to fly out to california
+                    to attend the conference.  It was a once in a lifetime
+                    experience and I will have a blog post to further detail the events of the trip.</p>
+
+                <h1>Club Involvement</h1>
+                <h3>RIT SPEX</h3>
+                <p>The club I am most involved with on campus is a student faculty research organization called RIT SPEX, or Space Exploration.  The goal of this organization is to provide students practical experience with
+                    space technology to put them one step ahead in the workforce.
+                    We have had several students who have interned at NASA, SpaceX, and Lockheed to name a few companies.
+                    You can check them out by going to http://spex.rit.edu/</p>
+                <br>
+                <p>I have had various levels of involvement with SPEX throughout my time at RIT.  I ended up joining my
+                    freshman semester and that same semester I led a small team in researching a small communications
+                    subsystem to be used in a cube satellite.  Then the following semester I continued as the
+                    communications team lead and led a group in creating two different antennas which were
+                    used to gather data from NOAA weather satellites.  In addition to this I started to
+                    develop an interest in astronomy, and our astro tracking team, when I wrote software
+                    for the automation of our Meade LX200 telescope over a wireless network.  For the
+                    duration of my sophomore year I moved away from communications and into astronomy
+                    where I improved our automation software and wrote code to track low earth orbit satellites.
+                    I ended up co-leading the astro tracking team in the Spring of 2018.</p>
+                <br>
+                <p>
+                    I have had a number of other roles within the group.  One semester I led a small team in the design
+                    of a small satellite based on the designs of Moorhead Universities 50$ Sat.
+                    Another semester I was treasurer of the group.
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </body>
+
+
+</html>

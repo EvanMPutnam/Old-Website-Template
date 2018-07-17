@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to the admin page</title>
+</head>
+<body>
+
+    <h1>Welcome {{currentUser}}! </h1>
+    <br>
+    <a href="{{ url_for('uploadPost') }}">Post/Portfolio/Image Upload</a>
+    <br>
+    <a href="{{ url_for('uploadedImages') }}">View Images</a>
+    <br>
+    <a href="{{ url_for('deleteItem') }}">Delete Posts</a>
+    <br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <br>
+
+</body>
+</html>

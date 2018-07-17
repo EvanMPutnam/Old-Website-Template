@@ -1,0 +1,72 @@
+<html>
+    <title>Evan Putnam's showcase and blog</title>
+
+
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/main.css') }}">
+    <style>
+        .bgimg{
+            background-image: url("{{ url_for('static',filename='Images/portfolio.jpg') }}");
+
+            height: 500px;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+
+
+            text-align: center;
+            padding-top: 16px;
+        }
+    </style>
+
+    <body>
+
+
+        <div class="topnav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('about') }}">About</a>
+          <a class="active" href="{{ url_for('portfolioPost') }}">Portfolio</a>
+          <a href="{{ url_for('blog') }}">Blog</a>
+          <a href="{{ url_for('contactMe') }}">Contact</a>
+        </div>
+
+        <div class="bgimg">
+
+            <div class="bgimgTxt">
+                <p>Portfolio</p>
+            </div>
+        </div>
+
+        <br>
+
+
+        <div class="padded">
+            {% if post %}
+                <h1>{{ post.title }}</h1>
+                <p>by {{ post.author }} <br></p>
+                {{ post.content|safe }}
+            {% endif %}
+
+            {% if posts %}
+                {% for post in posts %}
+                    <h1>{{ post.title }}</h1>
+                    <p>by {{ post.author }} <br></p>
+                    {{ post.content|safe }}
+                {%- endfor %}
+            {% endif %}
+         </div>
+
+
+
+    </body>
+
+
+</html>
