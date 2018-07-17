@@ -1,4 +1,5 @@
 from flask import Flask, render_template, flash, request
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 import markdown
@@ -10,6 +11,7 @@ from flask_login import LoginManager
 
 
 #NOTE default user/pass is admin admin
+
 
 
 '''
